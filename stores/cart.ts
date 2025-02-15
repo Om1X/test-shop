@@ -59,5 +59,14 @@ export const useCartStore = defineStore('cart', () => {
         }
     }
 
-    return { initialCart, productsCount, totalPrice, cartData, loading, error, fetchCart, addToCart };
+    const removeFromCart = async (id: number): void => {
+        const inCartProductIndex: number = cartData.value
+            .findIndex((product: ProductData) => product.id === id);
+
+        if (inCartProductIndex > -1) {
+            cartData.value.splice(inCartProductIndex, 1);
+        }
+    }
+
+    return { initialCart, productsCount, totalPrice, cartData, loading, error, fetchCart, addToCart, removeFromCart };
 });

@@ -14,6 +14,10 @@ const isDialogOpen = ref(false);
 const handleOrder = () => {
   isDialogOpen.value = true;
 };
+
+const removeFromCart = (id: number) => {
+  cartStore.removeFromCart(id)
+}
 </script>
 
 <template>
@@ -35,7 +39,11 @@ const handleOrder = () => {
               ${{ (item.price * item.quantity).toFixed(2) }}
             </v-col>
             <v-col cols="12" sm="2" class="text-center mt-2 mt-sm-0">
-              <v-btn color="error" size="small" @click="cartStore.removeItem(item.id)">
+              <v-btn
+                color="error"
+                size="small"
+                @click="removeFromCart(item.id)"
+              >
                 <v-icon>mdi-close</v-icon>
               </v-btn>
             </v-col>
