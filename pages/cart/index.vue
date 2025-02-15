@@ -2,6 +2,10 @@
 import { ref } from 'vue';
 import { useCartStore } from '@/stores/cart';
 
+useHead({
+  title: () => `Test Shop / Cart`,
+});
+
 const cartStore = useCartStore();
 await cartStore.fetchCart();
 

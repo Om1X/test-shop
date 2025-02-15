@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {ProductInCart} from "~/types/products";
+import type {ProductData} from "~/types/products";
 
 const productsStore = useProductsStore();
 const cartStore = useCartStore();
@@ -7,13 +7,17 @@ const route = useRoute();
 
 const productId = +route.params.id;
 const inCartQuantity = computed(() => {
-  const inCartProduct = cartStore.productsInCart
-      .find((productInCart: ProductInCart) => productInCart.productId === productId);
+  const inCartProduct = cartStore.cartData
+      .find((productInCart: ProductData) => productInCart.id === productId);
   return inCartProduct?.quantity || 0;
 });
 
 await productsStore.fetchProductById(+route.params.id);
 await cartStore.fetchCart();
+
+useHead({
+  title: () => `Test Shop / ${ productsStore.selectedProductData.title }`,
+});
 
 function addToCart() {
   cartStore.addToCart(productId);
