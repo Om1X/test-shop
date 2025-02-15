@@ -35,7 +35,7 @@ function addToCart() {
           <v-card-text>
             <p>{{ productsStore.selectedProductData.description }}</p>
             <p><strong>Category:</strong> {{ productsStore.selectedProductData.category }}</p>
-            <p><strong>Rating:</strong> {{ productsStore.selectedProductData.rating.rate }} ⭐ ({{ productsStore.selectedProductData.rating.count }} отзывов)</p>
+            <p><strong>Rating:</strong> {{ productsStore.selectedProductData.rating.rate }} ⭐ ({{ productsStore.selectedProductData.rating.count }} reviews)</p>
           </v-card-text>
           <v-card-actions>
             <v-btn
